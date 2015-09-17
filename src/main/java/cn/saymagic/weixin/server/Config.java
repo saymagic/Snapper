@@ -8,4 +8,6 @@ public class Config {
 	/** 图灵机器人的APPKEY，可在图灵官方申请*/
 	public static final String APIKEY = "44385f3c0d1e1626f05926e1ae990508"; 
 	
+    /** 欢迎语 */
+    public static final String WELCOME = "我是灵雀云，灵动轻便又高效的容器云平台。";
 }

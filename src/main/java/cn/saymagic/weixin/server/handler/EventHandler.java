@@ -2,6 +2,7 @@ package cn.saymagic.weixin.server.handler;
 
 
 import cn.saymagic.weixin.server.bean.MsgRequest;
+import cn.saymagic.weixin.server.Config;
 
 public class EventHandler extends BaseHandler {
 	@Override
@@ -10,7 +11,7 @@ public class EventHandler extends BaseHandler {
 			return null;
 		else
 			if("subscribe".equals(msgRequest.getEvent())){
-				return getResponseStringByContent("欢迎您关注瑰族，我将定期为您推荐一些经典美食、美食心得、美食做法。要知道，吃，是一种情怀。欢迎您加入吃货的世界。", msgRequest);
+				return getResponseStringByContent(Config.WELCOME, msgRequest);
 			}else if("CLICK".equals(msgRequest.getEvent())){
 				String eventKey = msgRequest.getEventKey();
 				String content = "";
