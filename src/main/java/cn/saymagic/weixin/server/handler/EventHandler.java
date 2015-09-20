@@ -11,7 +11,7 @@ public class EventHandler extends BaseHandler {
 			return null;
 		else
 			if("subscribe".equals(msgRequest.getEvent())){
-				return getResponseStringByContent(Config.WELCOME, msgRequest);
+				return getResponseStringByContent(Config.getWelcome(), msgRequest);
 			}else if("CLICK".equals(msgRequest.getEvent())){
 				String eventKey = msgRequest.getEventKey();
 				String content = "";

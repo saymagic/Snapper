@@ -1,4 +1,4 @@
-package cn.saymagic.weixin.server;
+package cn.saymagic.weixin.server.servlet;
 
 
 import java.io.IOException;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import cn.saymagic.weixin.server.Config;
 import cn.saymagic.weixin.server.bean.MsgRequest;
 import cn.saymagic.weixin.server.handler.BaseHandler;
 import cn.saymagic.weixin.server.handler.EventHandler;
@@ -42,7 +43,7 @@ public class WxApiServlet extends HttpServlet {
         response.setStatus(200);
         response.setCharacterEncoding("UTF-8");
 		if(request.getParameter("timestamp") == null){//如果是空打印出首页
-			response.getWriter().write("欢迎拜访这个网页!");
+			response.getWriter().write("Hi!, 欢迎拜访这个网页! 你可以通过在微信公众号中搜索" + Config.getName() +" 来关注我。");
 		}else{
 			String signature = request.getParameter("signature");// 微信加密签名
 			String timestamp = request.getParameter("timestamp");// 时间戳
@@ -50,10 +51,10 @@ public class WxApiServlet extends HttpServlet {
 			String echostr = request.getParameter("echostr");// 随机字符串
 
 			// 校验成功返回  echostr，成功成为开发者；否则返回error，接入失败
-			if (validSign(signature, Config.TOKEN, timestamp, nonce)) {
+			if (validSign(signature, Config.getToken(), timestamp, nonce)) {
 				response.getWriter().write(echostr);
 			}else{
-				response.getWriter().write("Token校验失败，但也欢迎拜访这个网页!");
+				response.getWriter().write("Token校验失败，但非常欢迎拜访这个网页!");
 			}
 		}
 		
