@@ -8,10 +8,24 @@
 
 ![](http://cdn.saymagic.cn/o_19uc6geo1pgco0n1tj22no467o.png)
 
-然后再Config.java中配置`APPKEY`属性。第二点是微信公众平台会对首次添加的后台地址做token验证，因此也需要在Config.java文件里配置`TOKEN`字段。这个字段的值需要和微信公众平台后台里设置的token相等。
+wx_maven可以通过配置不同的变量来达到每个公众号不同的需求，目前可以配置的变量都在`Config.java`中，包括：
+
+* NAME: 微信公众号的名称
+
+* TOKEN： 微信公众号的token，用于验证之用，这个字段的值需要和微信公众平台后台里设置的token相等。
+
+* APIKEY： 前文所说的图灵机器人的APPKEY，可在图灵官方申请
+
+* WELCOME： 用户关注时发出的欢迎语
+
+* APPID： 微信公众号后台APPID
+
+* APPSECRET： 微信公众号后台APPSECRET
+
+你可以通过直接修改`Config.java` ，但你可以通过在系统变量中配置这个个变量，程序会优先读取系统变量中是否存在这个值，没有的话才会读取`Config.java`中得字段，这主要是为了Docker环境或者类似[Coding](http://coding.net)这类的云平台。
 
 目前没有完工，还在不断完善、进化中。
 
 # Dokcer镜像
 
-如果你习惯Docker环境，欢迎在此查看其镜像：[https://hub.alauda.cn/repos/saymagic/wx_server](https://hub.alauda.cn/repos/saymagic/wx_server)
+如果你习惯Docker环境，欢迎在此查看这个镜像：[https://hub.alauda.cn/repos/saymagic/wx_server](https://hub.alauda.cn/repos/saymagic/wx_server)
